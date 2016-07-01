@@ -619,6 +619,7 @@ class NinjaGenerator {
     unordered_set<Symbol> used_env_vars(Vars::used_env_vars());
     // PATH changes $(shell).
     used_env_vars.insert(Intern("PATH"));
+    used_env_vars.insert(Intern("MAKEFLAGS"));
     for (Symbol e : used_env_vars) {
       StringPiece val(getenv(e.c_str()));
       used_envs_.emplace(e.str(), val.as_string());
