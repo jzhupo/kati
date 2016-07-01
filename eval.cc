@@ -71,6 +71,7 @@ Var* Evaluator::EvalRHS(Symbol lhs, Value* rhs_v, StringPiece orig_rhs,
         rhs = new RecursiveVar(rhs_v, origin, orig_rhs);
       } else {
         prev->AppendVar(this, rhs_v);
+        prev->SetOrigin(origin);
         rhs = prev;
         needs_assign = false;
       }

@@ -52,6 +52,8 @@ class Var : public Evaluable {
 
   virtual void AppendVar(Evaluator* ev, Value* v);
 
+  virtual void SetOrigin(VarOrigin);
+
   virtual StringPiece String() const = 0;
 
   virtual string DebugString() const = 0;
@@ -75,6 +77,8 @@ class SimpleVar : public Var {
   virtual void Eval(Evaluator* ev, string* s) const override;
 
   virtual void AppendVar(Evaluator* ev, Value* v) override;
+
+  virtual void SetOrigin(VarOrigin) override;
 
   virtual StringPiece String() const override;
 
@@ -101,6 +105,8 @@ class RecursiveVar : public Var {
   virtual void Eval(Evaluator* ev, string* s) const override;
 
   virtual void AppendVar(Evaluator* ev, Value* v) override;
+
+  virtual void SetOrigin(VarOrigin) override;
 
   virtual StringPiece String() const override;
 

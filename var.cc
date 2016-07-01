@@ -47,6 +47,10 @@ void Var::AppendVar(Evaluator*, Value*) {
   CHECK(false);
 }
 
+void Var::SetOrigin(VarOrigin) {
+  // Nothing to do.
+}
+
 SimpleVar::SimpleVar(VarOrigin origin)
     : origin_(origin) {
 }
@@ -64,6 +68,10 @@ void SimpleVar::AppendVar(Evaluator* ev, Value* v) {
   v->Eval(ev, &buf);
   v_.push_back(' ');
   v_ += buf;
+}
+
+void SimpleVar::SetOrigin(VarOrigin origin) {
+  origin_ = origin;
 }
 
 StringPiece SimpleVar::String() const {
@@ -84,6 +92,10 @@ void RecursiveVar::Eval(Evaluator* ev, string* s) const {
 
 void RecursiveVar::AppendVar(Evaluator*, Value* v) {
   v_ = NewExpr3(v_, NewLiteral(" "), v);
+}
+
+void RecursiveVar::SetOrigin(VarOrigin origin) {
+  origin_ = origin;
 }
 
 StringPiece RecursiveVar::String() const {
