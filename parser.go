@@ -693,7 +693,7 @@ func (p *parser) processDefine(line []byte) {
 		}
 		return
 	}
-	if p.inDef[len(p.inDef)-1] == '\n' {
+	if len(p.inDef) > 0 && p.inDef[len(p.inDef)-1] == '\n' {
 		p.inDef = p.inDef[:len(p.inDef)-1]
 	}
 	glog.V(1).Infof("multilineAssign %q %q", p.defineVar, p.inDef)

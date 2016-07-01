@@ -258,7 +258,7 @@ func gomaCmdForAndroidCompileCmd(cmd string) (string, bool) {
 }
 
 func descriptionFromCmd(cmd string) (string, bool) {
-	if !strings.HasPrefix(cmd, "echo") || !isWhitespace(rune(cmd[4])) {
+	if !strings.HasPrefix(cmd, "echo") || len(cmd) < 5 || !isWhitespace(rune(cmd[4])) {
 		return "", false
 	}
 	echoarg := cmd[5:]
