@@ -104,7 +104,7 @@ void Flags::Parse(int argc, char** argv) {
         "--remote_num_jobs", argv, &i, &num_jobs_str)) {
       remote_num_jobs = strtol(num_jobs_str, NULL, 10);
       if (remote_num_jobs <= 0) {
-        ERROR("Invalid -j flag: %s", num_jobs_str);
+        ERROR("Invalid --remote_num_jobs flag: %s", num_jobs_str);
       }
     } else if (ParseCommandLineOptionWithArg(
         "--ninja_suffix", argv, &i, &ninja_suffix)) {
